@@ -8,10 +8,10 @@ class Config(object):
     use_se = False
     loss = 'focal_loss'
 
-    display = False
+    display = True
     finetune = False
 
-    train_root = '/data/Datasets/webface/CASIA-maxpy-clean-crop-144/'
+    train_root = '/data/facebank/'
     train_list = '/data/Datasets/webface/train_data_13938.txt'
     val_list = '/data/Datasets/webface/val_data_13938.txt'
 
@@ -19,8 +19,8 @@ class Config(object):
     test_list = 'test.txt'
 
     lfw_root = '/data/Datasets/lfw/lfw-align-128'
-    lfw_test_list = '/data/Datasets/lfw/lfw_test_pair.txt'
-
+    #lfw_test_list = '/data/Datasets/lfw/lfw_test_pair.txt'
+    lfw_test_list = '/lfw_test_pair.txt'
     checkpoints_path = 'checkpoints'
     load_model_path = 'models/resnet18.pth'
     test_model_path = 'checkpoints/resnet18_110.pth'
