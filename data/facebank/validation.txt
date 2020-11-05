@@ -1,35 +1,35 @@
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3401\3401_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3429\3429_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3576\3576_2_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3596\3596_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3596\3596_2_face2.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3596\3596_3_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3634\3634_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3689\3689_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3689\3689_5_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3713\3713_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3721\3721_3_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3724\3724_2_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3732\3732_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3740\3740_5_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3812\3812_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3871\3871_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3889\3889_2_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3889\3889_3_face2.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3893\3893_5_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3898\3898_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3905\3905_5_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3914\3914_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3914\3914_4_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3916\3916_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3916\3916_2_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3916\3916_4_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3941\3941_3_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3943\3943_1_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3943\3943_5_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3947\3947_2_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3947\3947_5_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3953\3953_5_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3955\3955_2_face3.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3970\3970_5_face1.png
-data/images/C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\7858\7858_2_face2.png
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3405\3405_3_face1.png 3405
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3405\3405_5_face1.png 3405
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3429\3429_2_face1.png 3429
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3505\3505_2_face3.png 3505
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3505\3505_6_face1.png 3505
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3628\3628_1_face1.png 3628
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3634\3634_1_face1.png 3634
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3677\3677_3_face1.png 3677
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3677\3677_4_face1.png 3677
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3721\3721_4_face1.png 3721
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3724\3724_1_face1.png 3724
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3724\3724_3_face1.png 3724
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3732\3732_5_face1.png 3732
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3740\3740_2_face1.png 3740
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3758\3758_5_face1.png 3758
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3812\3812_4_face1.png 3812
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3814\3814_1_face1.png 3814
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3814\3814_4_face1.png 3814
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3889\3889_2_face1.png 3889
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3889\3889_3_face2.png 3889
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3889\3889_5_face1.png 3889
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3893\3893_2_face2.png 3893
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3893\3893_3_face1.png 3893
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3893\3893_4_face2.png 3893
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3898\3898_1_face1.png 3898
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3905\3905_3_face1.png 3905
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3912\3912_1_face1.png 3912
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3918\3918_3_face1.png 3918
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3931\3931_4_face1.png 3931
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3942\3942_3_face2.png 3942
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3953\3953_1_face1.png 3953
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3953\3953_2_face2.png 3953
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\3955\3955_1_face1.png 3955
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\7858\7858_4_face1.png 7858
+C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\data\facebank\7895\7895_1_face1.png 7895

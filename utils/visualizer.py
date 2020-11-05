@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.metrics import roc_curve
 
-
+# launch visdom server in cmd: python -m visdom.server
 class Visualizer(object):
 
     def __init__(self, env='default', **kwargs):

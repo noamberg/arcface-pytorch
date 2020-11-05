@@ -46,18 +46,21 @@ def data_partition(images_path):
     test_idx = sorted(test_idx)
 
     for i1 in train_idx:
-        X_train.append(str('data/images/')+files_list[i1])
-        train_file.write('data/images/'+files_list[i1] + '\n')
+        class_num = files_list[i1].split('\\')[8]
+        X_train.append(files_list[i1])
+        train_file.write(files_list[i1] + ' ' + class_num + '\n')
 
 
     for i2 in val_idx:
-        X_val.append(str('data/images/')+files_list[i2])
-        validation_file.write('data/images/' + files_list[i2] + '\n')
+        class_num = files_list[i2].split('\\')[8]
+        X_val.append(files_list[i2])
+        validation_file.write( files_list[i2] + ' ' + class_num + '\n')
 
 
     for i3 in test_idx:
-        X_test.append(str('data/images/')+files_list[i3])
-        test_file.write('data/images/' + files_list[i3] + '\n')
+        class_num = files_list[i3].split('\\')[8]
+        X_test.append(files_list[i3])
+        test_file.write(files_list[i3] + ' ' + class_num + '\n')
 
     train_file.close()
     validation_file.close()

@@ -13,7 +13,7 @@ import numpy as np
 import time
 from config import Config
 from torch.nn import DataParallel
-
+import imgaug as ia
 from resnet import resnet_face18, resnet34, resnet50
 
 
@@ -30,6 +30,22 @@ def get_lfw_list(pair_list):
         if splits[1] not in data_list:
             data_list.append(splits[1])
     return data_list
+
+
+def get_cow_list(list):
+    with open(list, 'r') as fd:
+        frames = fd.readlines()
+    identities_list = []
+    filenames_list = []
+    for frame in frames:
+        splits = frame.split()
+
+        if splits[0] not in filenames_list:
+            filenames_list.append(splits[0])
+
+        if splits[1] not in identities_list:
+            identities_list.append(int(splits[1]))
+    return filenames_list, identities_list
 
 
 def load_image(img_path):
@@ -81,6 +97,30 @@ def get_featurs(model, test_list, batch_size=10):
 
     return features, cnt
 
+def lfw_test(model, img_paths, identity_list, compair_list, batch_size):
+    s = time.time()
+    features, cnt = get_featurs(model, img_paths, batch_size=batch_size)
+    print(features.shape)
+    t = time.time() - s
+    print('total time is {}, average time is {}'.format(t, t / cnt))
+    fe_dict = get_feature_dict(identity_list, features)
+    acc, th = test_performance(fe_dict, compair_list)
+    print('lfw face verification accuracy: ', acc, 'threshold: ', th)
+    return acc
+
+def cow_test(model, img_paths, identity_list, batch_size):
+    s = time.time()
+    features, cnt = get_featurs(model, img_paths, batch_size=batch_size)
+    print(features.shape)
+    t = time.time() - s
+    print('total time is {}, average time is {}'.format(t, t / cnt))
+    fe_dict = get_feature_dict(identity_list, features)
+    acc, th = test_performance(fe_dict, compair_list)
+    print('lfw face verification accuracy: ', acc, 'threshold: ', th)
+    return acc
+
+
+
 
 def load_model(model, model_path):
     model_dict = model.state_dict()
@@ -125,10 +165,12 @@ def test_performance(fe_dict, pair_list):
     sims = []
     labels = []
     for pair in pairs:
-        splits = pair.split()
-        fe_1 = fe_dict[splits[0]]
-        fe_2 = fe_dict[splits[1]]
-        label = int(splits[2])
+        splits = pair.split(' ')
+        splits[1] = int(splits[1].split('\n')[0])
+        gt_label = finding_to_label['%d'%splits[1]]
+        fe_1 = fe_dict[gt_label]
+        #fe_2 = fe_dict[splits[1]]
+        # label = int(splits[2])
         sim = cosin_metric(fe_1, fe_2)
 
         sims.append(sim)
@@ -136,18 +178,6 @@ def test_performance(fe_dict, pair_list):
 
     acc, th = cal_accuracy(sims, labels)
     return acc, th
-
-
-def lfw_test(model, img_paths, identity_list, compair_list, batch_size):
-    s = time.time()
-    features, cnt = get_featurs(model, img_paths, batch_size=batch_size)
-    print(features.shape)
-    t = time.time() - s
-    print('total time is {}, average time is {}'.format(t, t / cnt))
-    fe_dict = get_feature_dict(identity_list, features)
-    acc, th = test_performance(fe_dict, compair_list)
-    print('lfw face verification accuracy: ', acc, 'threshold: ', th)
-    return acc
 
 
 if __name__ == '__main__':
@@ -165,11 +195,28 @@ if __name__ == '__main__':
     model.load_state_dict(torch.load(opt.test_model_path))
     model.to(torch.device("cuda"))
 
-    identity_list = get_lfw_list(opt.lfw_test_list)
-    img_paths = [os.path.join(opt.lfw_root, each) for each in identity_list]
+    finding_to_label = {'3401': 0, '3405': 1, '3429': 2, '3505': 3, '3576': 4, '3596': 5,
+                        '3628': 6, '3634': 7, '3677': 8, '3689': 9, '3698': 10, '3713': 11,
+                        '3721': 12, '3724': 13, '3732': 14, '3740': 15, '3758': 16, '3812': 17,
+                        '3813': 18, '3814': 19, '3855': 20, '3871': 21, '3889': 22,
+                        '3893': 23, '3898': 24, '3905': 25, '3912': 26, '3914': 27, '3916': 28,
+                        '3918': 29, '3931': 30, '3941': 31, '3942': 32, '3943': 33, '3947': 34,
+                        '3953': 35, '3955': 36, '3970': 37, '7836': 38, '7842': 39, '7858': 40,
+                        '7895': 41}
 
+    # identity_list = get_lfw_list(opt.lfw_test_list)
+    # img_paths = [os.path.join(opt.lfw_root, each) for each in identity_list]
+    #
+    # model.eval()
+    # lfw_test(model, img_paths, identity_list, opt.lfw_test_list, opt.test_batch_size)
+
+
+    filenames_list, identities_list = get_cow_list(opt.val_list)
+    labels = []
+    for v in identities_list:
+        labels.append(finding_to_label['%d'%v])
     model.eval()
-    lfw_test(model, img_paths, identity_list, opt.lfw_test_list, opt.test_batch_size)
+    lfw_test(model, filenames_list, labels, opt.val_list, opt.test_batch_size)
 
 
 
