@@ -2,6 +2,7 @@ from __future__ import print_function
 import os
 
 from focal_loss import FocalLoss
+from myUtils import plot_classes_preds
 from test import *
 from dataset import *
 import torch
@@ -28,6 +29,12 @@ from torchvision import datasets
 from torch.autograd import Variable
 from torch.utils.data.sampler import SubsetRandomSampler
 
+from torchbearer import Trial
+from torchbearer.callbacks import TensorBoard
+from torch.utils.tensorboard import SummaryWriter
+import time
+from datetime import datetime
+
 
 def save_model(model, save_path, name, iter_cnt):
     ensure_dir(save_path)
@@ -40,12 +47,15 @@ def ensure_dir(file_path):
         os.makedirs(file_path)
 
 
+
 if __name__ == '__main__':
 
     opt = Config()
     # python -m visdom.server, http://localhost:8097
-    if opt.display:
-        visualizer = Visualizer()
+    # # if opt.display:
+    # #     visualizer = Visualizer()
+    # global plotter
+    # plotter = VisdomLinePlotter(env_name='Plots')
     device = torch.device("cuda")
 
     dataset = Dataset2(opt.train_root, opt.total_dataset_list,input_shape=opt.input_shape)
@@ -157,6 +167,13 @@ if __name__ == '__main__':
                                      lr=opt.lr, weight_decay=opt.weight_decay)
     scheduler = StepLR(optimizer, step_size=opt.lr_step, gamma=0.1)
 
+    logs = 'C:\\Users\\noamb\\PycharmProjects\\Volcani\\arcface-pytorch\\tensorboard\\' + datetime.now().strftime("%d_%m_%Y__%H_%M_%S")
+    ensure_dir(logs)
+    # launch tensorboard from terminal: tensorboard --logdir=C:\Users\noamb\PycharmProjects\Volcani\arcface-pytorch\tensorboard
+    # Open TensorBoard in browser: http://localhost:6006/
+    tb_writer = SummaryWriter(log_dir=logs,comment=opt.name)
+
+
     start = time.time()
 #     for i in range(opt.max_epoch):
 #         scheduler.step()
@@ -245,17 +262,42 @@ if __name__ == '__main__':
                     time_str = time.asctime(time.localtime(time.time()))
                     if phase == 'train':
                         print('{} train epoch {} iter {} {} iters/s loss {} acc {}'.format(time_str, epoch, ii, speed,
-                                                                                            loss.item(), acc) )
+                                                                                           loss.item(), acc))
+                        # log the running loss
+                        tb_writer.add_scalars('Loss', {"Train": loss}, epoch * len(data_loaders[phase]) + ii)
+                        tb_writer.add_scalars('Accuracy', {"Train": acc}, epoch * len(data_loaders[phase]) + ii)
+
+                        # ...log a Matplotlib Figure showing the model's predictions on a
+                        # random mini-batch
+                        # tb_writer.add_figure('predictions vs. actuals',
+                        #                   plot_classes_preds(model, data_input, labels),
+                        #                   global_step=epoch * len(data_loaders[phase]) + ii)
+
                     else:
                         print('{} validation epoch {} iter {} {} iters/s loss {} acc {}'.format(time_str, epoch, ii, speed,
                                                                                            loss.item(), acc))
-                    if opt.display:
-                        if phase == 'train':
-                            visualizer.display_current_results(iters, loss.item(), name='train_loss')
-                            visualizer.display_current_results(iters, acc, name='train_acc')
-                        else:
-                            visualizer.display_current_results(iters, loss.item(), name='validation_loss')
-                            visualizer.display_current_results(iters, acc, name='validation_acc')
+                        # ...log the running loss
+                        tb_writer.add_scalars('Loss',{"Validation": loss}, epoch * len(data_loaders[phase]) + ii)
+                        tb_writer.add_scalars('Accuracy', {"Validation": acc}, epoch * len(data_loaders[phase]) + ii)
+
+                        # ...log a Matplotlib Figure showing the model's predictions on a
+                        # random mini-batch
+                        # tb_writer.add_figure('predictions vs. actuals',
+                        #                      plot_classes_preds(model, data_input, labels),
+                        #                      global_step=epoch * len(data_loaders[phase]) + ii)
+
+                    # if opt.display:
+                    #     if phase == 'train':
+                    #         # visualizer.display_current_results(iters, loss.item(), name='train_loss')
+                    #         # visualizer.display_current_results(iters, acc, name='train_acc')
+                    #         plotter.plot('loss', 'train', 'Class Loss', iters, loss.item())
+                    #         plotter.plot('acc', 'train', 'Class Accuracy', iters, acc)
+                    #     else:
+                    #         # visualizer.display_current_results(iters, loss.item(), name='validation_loss')
+                    #         # visualizer.display_current_results(iters, acc, name='validation_acc')
+                    #         plotter.plot('loss', 'val', 'Class Loss', iters, loss.item())
+                    #         plotter.plot('acc', 'val', 'Class Accuracy', iters, acc)
+
 
                     start = time.time()
 
